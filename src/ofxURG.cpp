@@ -208,7 +208,7 @@ std::vector<ofxURG::Step> ofxURG::getDataFiltered(){
 		ofVec2f p = s.getPosition();
 
 		bool passes = true;
-		if (roi.size() > 0 && !roi.inside(p)) {
+		if (roi.size() > 0 && !roi.inside({p.x, p.y, 0})) {
 			passes = false;
 		}
 		if (maskPoints.size() > 0 && !passesMask(p)) {
@@ -297,14 +297,14 @@ void ofxURG::setRoi(ofRectangle rect){
 
 void ofxURG::setRoi(ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d){
 	ofPolyline poly;
-	poly.addVertices({a, b, c, d});
+	poly.addVertices({{a.x, a.y, 0}, {b.x, b.y, 0}, {c.x, c.y, 0}, {d.x, d.y, 0}});
 	setRoi(poly);
 }
 
 void ofxURG::setRoi(std::vector<ofVec2f> points){
 	ofPolyline poly;
 	for(auto p: points){
-		poly.addVertex(p);
+		poly.addVertex({p.x, p.y, 0});
 	}
 	setRoi(poly);
 }
