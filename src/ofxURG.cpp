@@ -236,10 +236,27 @@ bool ofxURG::passesMask(ofVec2f p1) {
 	return !closeToMask;
 }
 
-std::vector<ofVec2f> ofxURG::getPoints(float pointSeparationDistance){
+std::vector<long> ofxURG::getDistances() {
+	std::vector<long> distances;
+	
+	for(auto& step: getDataRaw()){
+		distances.push_back(step.distance);
+	}
+	
+	return distances;
+}
+
+std::vector<ofVec2f> ofxURG::getPoints(float pointSeparationDistance, bool filter){
 	std::vector<ofVec2f> points;
-	for(auto& step: getDataFiltered()){
-		points.push_back(step.getPosition());
+	
+	if (filter) {
+		for(auto& step: getDataFiltered()){
+			points.push_back(step.getPosition());
+		}
+	} else {
+		for(auto& step: getDataRaw()){ 
+			points.push_back(step.getPosition());
+		}
 	}
 
 	if(pointSeparationDistance == 0)

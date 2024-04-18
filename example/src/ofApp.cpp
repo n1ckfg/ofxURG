@@ -16,8 +16,8 @@ void ofApp::setup(){
     // line.addVertex(-600, -1000);
     // line.close();
     // urg.setRoi(line);
-
-    urg.start();
+       
+    urg.start();   
 }
 
 //--------------------------------------------------------------
@@ -31,16 +31,19 @@ void ofApp::draw(){
     vector<ofVec2f> maskPoints = urg.getMaskPoints();
     urg.drawPoints(maskPoints, 150, ofColor(0,0,0,128), false);
 
-    vector<ofVec2f> calibrationPoints = urg.getPoints();
+    vector<ofVec2f> calibrationPoints = urg.getPoints(0, true);
     urg.drawPoints(calibrationPoints, 10, ofColor::azure, false);
 
-    vector<ofVec2f> blobs = urg.getPoints(300);
+    vector<ofVec2f> blobs = urg.getPoints(300, true);
     urg.drawPoints(blobs, 100);
 
     int numblobs = blobs.size();
 
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()) + "fps", 30, 30);
     ofDrawBitmapStringHighlight(ofToString(numblobs) + " blobs", 30, 50);
+    
+    //vector<long> distances = urg.getDistances();
+    //cout << distances.at(0) << endl;
 }
 
 //--------------------------------------------------------------
