@@ -47,7 +47,7 @@ class ofxURG: private ofThread{
 		std::vector<ofVec2f> getPoints(float pointSeparationDistance=0.0f, bool filter=true);
 		std::vector<Step> getDataRaw();
 
-		std::vector<long> getDistances();
+		std::vector<float> getDistances(bool filter=true);
 
 		void setRoi(ofRectangle rect);
 		void setRoi(ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d);

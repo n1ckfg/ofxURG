@@ -40,10 +40,7 @@ void ofApp::draw(){
     int numblobs = blobs.size();
 
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()) + "fps", 30, 30);
-    ofDrawBitmapStringHighlight(ofToString(numblobs) + " blobs", 30, 50);
-    
-    //vector<long> distances = urg.getDistances();
-    //cout << distances.at(0) << endl;
+    ofDrawBitmapStringHighlight(ofToString(numblobs) + " blobs", 30, 50);    
 }
 
 //--------------------------------------------------------------

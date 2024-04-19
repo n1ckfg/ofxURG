@@ -236,11 +236,17 @@ bool ofxURG::passesMask(ofVec2f p1) {
 	return !closeToMask;
 }
 
-std::vector<long> ofxURG::getDistances() {
-	std::vector<long> distances;
+std::vector<float> ofxURG::getDistances(bool filter) {
+	std::vector<float> distances;
 	
-	for(auto& step: getDataRaw()){
-		distances.push_back(step.distance);
+	if (filter) {
+		for (auto& step: getDataFiltered()) {
+			distances.push_back((float) step.distance);
+		}
+	} else {
+		for (auto& step: getDataRaw()) { 
+			distances.push_back((float) step.distance);
+		}
 	}
 	
 	return distances;
