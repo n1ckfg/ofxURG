@@ -68,6 +68,8 @@ class ofxURG: private ofThread{
 		float getDrawZoom() const;
 		void setDrawZoom(float value);
 
+		ofVec2f getDistanceBounds();
+
 	private:
 
 		void setupInternal(std::string port);

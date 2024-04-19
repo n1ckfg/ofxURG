@@ -67,6 +67,10 @@ void ofxURG::setAngleMinMax(float min, float max){
 	//checkError(urg_(&urg, urg_deg2index(&urg, min), urg_deg2index(&urg, max), urg.scanning_skip_step));
 }
 
+ofVec2f ofxURG::getDistanceBounds() {
+	return ofVec2f((float) minDistance, (float) maxDistance);
+}
+
 void ofxURG::setStepSize(int step){
 	int minStep, maxStep;
 	checkError(urg_setSkipLines(&urg, step));
